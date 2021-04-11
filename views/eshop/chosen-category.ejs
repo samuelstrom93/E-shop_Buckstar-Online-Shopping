@@ -1,0 +1,37 @@
+<%- include("partials/header", {title: title}); %>
+
+<h1>Produkter filtrerade på kategori: </h1>
+
+<ul>
+    <li><b> <%= category %> </b></li>
+</ul>
+
+
+<table>
+	<tr>
+		<th>Produktkod</th>
+		<th>Namn</th>
+		<th>Pris</th>
+        <th>Antal i lager</th>
+        <th>Kategori</th>
+        <th>Redigera</th>
+	</tr>
+	<% for (const row of res) { %>
+	<tr>
+		<td><%= row.produktkod %></td>
+		<td><%= row.namn %></td>
+        <td><%= row.pris %></td>
+        <td><%= row.antal %></td>
+        <td><%= row.kategori %></td>
+        <td>
+            <a href="/eshop/product/update/<%= row.produktkod %>">Uppdatera</a>
+            <span> | </span>
+            <a href="/eshop/product/delete/<%= row.produktkod %>">Ta bort</a>
+
+        </td>
+	</tr>
+	<% }; %>
+</table>
+
+
+<%- include("partials/footer"); %>

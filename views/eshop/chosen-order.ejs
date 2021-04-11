@@ -1,0 +1,49 @@
+<%- include("partials/header", {title: title}); %>
+
+<h1>Order <%= orderNumber %> </h1>
+
+<table>
+	<tr>
+		<th>Produktkod</th>
+		<th>Namn</th>
+        <th>Pris</th>
+        <th>Antal</th>
+        <th>Lagerstatus</th>
+	</tr>
+	<% for (const row of res) { %>
+	<tr>
+		<td><%= row.produktkod %></td>
+		<td><%= row.namn %></td>
+        <td><%= row.pris %></td>
+        <td><%= row.antal %></td>
+        <td><%= row.lagerstatus %></td>
+	</tr>
+	<% }; %>
+</table>
+
+<hr>
+
+<form action="/eshop/order/add" method="post">
+        <select name="produktkod" required>
+            <option value="">Välj i listan</option>
+            <% for (const row of productList) { %> 
+                <option value=<%= row.produktkod %> ><%= row.namn %></option>
+            <% } %> 
+        </select>
+        <input type="number" name="antal" required>
+        <input type="hidden" name="orderId" value=<%= orderNumber %> required>
+        <input type="submit" value="Lägg till">
+</form>
+
+<p><b>Orderstatus:</b> <%= orderStatus[0].status %></p>
+
+
+
+
+<form action="/eshop/order/send-order/<%= orderNumber %>" method="GET">
+    <input type="submit" value="Beställ">
+</form>
+
+
+
+<%- include("partials/footer"); %>

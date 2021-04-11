@@ -1,0 +1,58 @@
+<%- include("partials/header", {title: title}); %>
+<% result = result[0] %>
+
+<h1>Uppdatera en produkt</h1>
+
+
+<form method="post" action="/eshop/product/update">
+    <fieldset>
+        <legend>Uppdatera Produkt</legend>
+
+        <label for="produktkod" >Produktkod</label>
+        <input id="produktkod" type="text" name="produktkod" value="<%= result.produktkod %>" readonly>
+
+        <label for="name">Namn</label>
+        <input id="namn" type="text" name="namn" value="<%= result.namn %>" >
+
+        <label for="beskrivning">Beskrivning</label>
+        <input id="beskrivning" type="text" name="beskrivning" value="<%= result.beskrivning %>">
+        
+        <label for="pris">Pris</label>
+        <input id="pris" type="number" name="pris" value="<%= result.pris %>">
+
+        <label for="kategori">Kategori</label>
+        <input id="kategori" type="text" name="kategori" value="<%= result.kategori %>" readonly>
+        
+        <input type="submit" name="doit" value="Uppdatera">
+    </fieldset>
+</form>
+
+
+<br><br>
+
+<h3>Nuvarande kategorier är:</h3>
+<ul>
+    <% for (const row of currentProductCategories) { %> 
+        <li><%= row.kategori %></li>
+    <% } %> 
+</ul>
+
+<form action="/eshop/product/category/update" method="post">
+    <fieldset>
+        <legend>Lägg till en kategori</legend>
+    <select name="category" required>
+        <option value="">Välj i listan</option>
+        <% for (const category of allCategories) { %> 
+            <option value=<%= category.id %> ><%= category.id %></option>
+        <% } %> 
+    </select>
+    <input type="hidden" name="produktkod" value=<%= result.produktkod %> required>
+    <input type="submit" value="Lägg till">
+</fieldset>
+</form>
+
+
+
+
+
+<%- include("partials/footer"); %>

@@ -1,0 +1,28 @@
+<%- include("partials/header", {title: title}); %>
+
+<h1>Våra produkter i lager</h1>
+
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Namn</th>
+		<th>Mail</th>
+        <th>Telefonnummer</th>
+        <th>Hantera</th>
+        <th>Faktura</th>
+	</tr>
+	<% for (const row of res) { %>
+	<tr>
+		<td><%= row.id %></td>
+		<td><%= row.namn %></td>
+        <td><%= row.email %></td>
+        <td><%= row.telefonnummer %></td>
+        <td><a href="order/create/<%= row.id %>">Skapa order</a></td>
+        <td><a href="order/create/<%= row.id %>">Se faktura</a></td>
+	</tr>
+	<% }; %>
+</table>
+
+
+
+<%- include("partials/footer"); %>

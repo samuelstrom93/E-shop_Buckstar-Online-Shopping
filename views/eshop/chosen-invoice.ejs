@@ -1,0 +1,60 @@
+<%- include("partials/header", {title: title}); %>
+
+
+
+<h1>Faktura <%= invoiceOverviewInfo[0].id %></h1>
+
+<h3>Detaljer</h3>
+<ul>
+    <% for (const row of invoiceOverviewInfo) { %>
+    <li><b>Fakturanummer</b> - <%= row.id %> </li>
+    <li><b>Beställningsnummer</b> - <%= row.bestallning_id %> </li>
+    <li><b>Kund-Id</b> - <%= row.kund_id %> </li>
+    <li><b>Kundnamn</b> - <%= row.namn %> </li>
+    <li><b>Adress</b> - <%= row.adress %> </li>
+    <li><b>Ort</b> - <%= row.ort %> </li>
+    <li><b>Postnummer</b> - <%= row.ort %> </li>
+    <li><b>Datum för skapad order</b> - <%= row.skapad %> </li>
+    <li><b>Betalstatus</b> - <%= row.betal_status %> </li>
+    <% }; %>
+</ul>
+
+<br><hr><br>
+
+<table>
+	<tr>
+		<th>Produktkod</th>
+		<th>Pris</th>
+        <th>Antal</th>
+		<th>Totalt pris</th>
+
+	</tr>
+	<% for (const row of invoiceProductinfo) { %>
+	<tr>
+		<td><%= row.produktkod %></td>
+		<td><%= row.pris %></td>
+        <td><%= row.antal %></td>
+        <td><%= row.totalt %></td>
+	</tr>
+	<% }; %>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b><%= invoiceOverviewInfo[0].totalt_pris %></b></td>
+    </tr>
+</table>
+
+<h3>Att betala (SEK)</h3>
+<dd><%= invoiceOverviewInfo[0].totalt_pris %></dd>
+
+<br>
+
+
+
+<!-- <pre><%= JSON.stringify(invoiceOverviewInfo, null, 4) %></pre>
+
+<pre><%= JSON.stringify(invoiceProductinfo, null, 4) %></pre> -->
+
+
+<%- include("partials/footer"); %>

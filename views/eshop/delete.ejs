@@ -1,0 +1,34 @@
+<%- include("partials/header", {title: title}); %>
+<% result = result[0] %>
+
+<h1>Ta bort en produkt</h1>
+
+
+<form method="post" action="/eshop/product/delete">
+    <fieldset>
+        <legend>Uppdatera Produkt</legend>
+
+        <label for="produktkod" >Produktkod</label>
+        <input id="produktkod" type="text" name="produktkod" value="<%= result.produktkod %>" readonly>
+
+        <label for="name">Namn</label>
+        <input id="namn" type="text" name="namn" value="<%= result.namn %>" readonly>
+
+        <label for="beskrivning">Beskrivning</label>
+        <input id="beskrivning" type="text" name="beskrivning" value="<%= result.beskrivning %>" readonly>
+        
+        <label for="pris">Pris</label>
+        <input id="pris" type="number" name="pris" value="<%= result.pris %>" readonly>
+
+        <label for="kategori">Kategori</label>
+        <input id="kategori" type="text" name="kategori" value="<%= result.kategori %>" readonly>
+        
+        <input type="submit" name="doit" value="Ta bort">
+    </fieldset>
+</form>
+
+
+
+
+
+<%- include("partials/footer"); %>

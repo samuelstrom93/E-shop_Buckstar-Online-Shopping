@@ -1,0 +1,35 @@
+<%- include("partials/header", {title: title}); %>
+
+<h1>Våra produkter i lager</h1>
+
+<table>
+	<tr>
+		<th>Produktkod</th>
+		<th>Namn</th>
+		<th>Pris</th>
+        <th>Antal i lager</th>
+        <th>Kategori</th>
+        <th>Redigera</th>
+	</tr>
+	<% for (const row of res) { %>
+	<tr>
+		<td><%= row.produktkod %></td>
+		<td><%= row.namn %></td>
+        <td><%= row.pris %></td>
+        <td><%= row.antal %></td>
+        <td><%= row.kategori %></td>
+        <td>
+            <a href="product/update/<%= row.produktkod %>">Uppdatera</a>
+            <span> | </span>
+            <a href="product/delete/<%= row.produktkod %>">Ta bort</a>
+
+        </td>
+	</tr>
+	<% }; %>
+</table>
+
+<br>
+<a href="product/create">Skapa en ny produkt</a>
+
+
+<%- include("partials/footer"); %>

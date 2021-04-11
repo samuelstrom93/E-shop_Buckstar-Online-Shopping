@@ -1,0 +1,38 @@
+<%- include("partials/header", {title: title}); %>
+
+<h1>Plocklista</h1>
+
+
+
+<table>
+	<tr>
+		<th>Produktkod</th>
+		<th>Antal beställda</th>
+        <th>Lagerstatus</th>
+        <th>Hylla</th>
+	</tr>
+	<% for (const row of res[0]) { %>
+	<tr>
+		<td><%= row.produktkod %></td>
+        <td><%= row.antal_bestallda %></td>
+        <td><%= row.lagerstatus %></td>
+        <td><%= row.hylla %></td>
+	</tr>
+	<% }; %>
+</table>
+
+
+<hr>
+
+<% for (const row of res[0]) { %>
+	<ul>
+        <% if (row.errorMessage !== undefined) { %>
+            <li><%= row.errorMessage %></li>
+        <% } %>
+    </ul>
+	<% }; %>
+
+
+
+
+<%- include("partials/footer"); %>

@@ -1,0 +1,32 @@
+<%- include("partials/header", {title: title}); %>
+
+<h1>Sök!</h1>
+
+
+
+<form >
+    <fieldset>
+        <legend>Sök efter logg</legend>
+        <input type="text" name="search" >
+        <input type="submit" value="Sök">
+    </fieldset>
+</form>
+
+<br>
+
+<table>
+	<tr>
+		<th>Tidsstämpel</th>
+		<th>Händelse</th>
+	</tr>
+	<% for (const row of logg) { %>
+	<tr>
+		<td><%= row.tidsstämpel %></td>
+        <td><%= row.händelse %></td>
+	</tr>
+	<% }; %>
+</table>
+
+
+
+<%- include("partials/footer"); %>

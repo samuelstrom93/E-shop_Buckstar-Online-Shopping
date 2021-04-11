@@ -1,0 +1,29 @@
+<%- include("partials/header", {title: title}); %>
+
+
+<h1>Faktura</h1>
+
+<table>
+	<tr>
+		<th>Fakturanummer</th>
+		<th>Bestallningsnummer</th>
+        <th>Kundnamn</th>
+		<th>Totalt pris</th>
+        <th>Betalstatus</th>
+
+        <th>Hantera</th>
+	</tr>
+	<% for (const row of invoices) { %>
+	<tr>
+		<td><%= row.id %></td>
+		<td><%= row.bestallning_id %></td>
+        <td><%= row.namn %></td>
+        <td><%= row.totalt_pris %></td>
+        <td><%= row.betal_status %></td>
+        <td><a href="invoice/<%= row.bestallning_id %>">Mer detaljer</a></td>
+	</tr>
+	<% }; %>
+</table>
+
+
+<%- include("partials/footer"); %>

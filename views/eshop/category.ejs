@@ -1,0 +1,25 @@
+<%- include("partials/header", {title: title}); %>
+
+<h1>Kategorier</h1>
+
+
+
+<h3>Våra produktkategorier</h3>
+<ul>
+    <% for (const row of res) { %>
+        <li><a href="product/category/<%= row.id %>"><%= row.id %></a></li>
+    <% }; %>
+</ul>
+
+
+<form method="post">
+    <fieldset>
+        <legend>Lägg till kategori</legend>
+
+        <input type="text" name="newCategory">
+        <input type="submit" value="Lägg till">
+    </fieldset>
+</form>
+
+
+<%- include("partials/footer"); %>

@@ -1,0 +1,40 @@
+<%- include("partials/header", {title: title}); %>
+
+<h1>Alla ordrar</h1>
+
+
+
+<table>
+	<tr>
+		<th>Beställnings-ID</th>
+		<th>Skapad</th>
+        <th>Orderrader</th>
+		<th>Kund-ID</th>
+        <th>Status</th>
+        <th>Namn</th>
+        <th>Adress</th>
+        <th>Ort</th>
+        <th>Postnummer</th>
+
+        <th>Hantera</th>
+	</tr>
+	<% for (const row of res) { %>
+	<tr>
+		<td><%= row.id %></td>
+		<td><%= row.skapad %></td>
+        <td><%= row.antal_orderrader %></td>
+        <td><%= row.kund_id %></td>
+        <td><%= row.status %></td>
+        <td><%= row.namn %></td>
+        <td><%= row.adress %></td>
+        <td><%= row.ort %></td>
+        <td><%= row.postnummer %></td>
+        <td><a href="order/<%= row.id %>">Redigera order</a></td>
+        <td><a href="order/picklist/<%= row.id %>">Plocklista</a></td>
+	</tr>
+	<% }; %>
+</table>
+
+
+
+<%- include("partials/footer"); %>
