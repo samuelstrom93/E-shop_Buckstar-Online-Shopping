@@ -3,7 +3,6 @@
 "use strict";
 
 const express = require("express");
-const { showCategories } = require("../src/eshop.js");
 const router = express.Router();
 const eshop = require("../src/eshop.js");
 

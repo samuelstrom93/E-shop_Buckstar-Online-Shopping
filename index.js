@@ -1,10 +1,8 @@
 // Samuel Ström
-// Kmom 05 - Eshop
 
 "use strict";
 
-const port = process.env.DBWEBB_PORT || 1337; // Rätt för att få port 1337?
-// const path = require('path');
+const port = process.env.DBWEBB_PORT || 1337; 
 const express = require("express");
 const app = express();
 const routeEshop = require("./route/eshop.js");
